@@ -128,6 +128,10 @@ var MCCordovaPlugin = {
         argsCheck.checkArgs('fF', `${PLUGIN_NAME}.getAttributes`, arguments);
         _exec(successCallback, errorCallback, 'getAttributes');
     },
+    initialize: function(successCallback, errorCallback) {
+        argsCheck.checkArgs('fF', `${PLUGIN_NAME}.initialize`, arguments);
+        _exec(successCallback, errorCallback, 'initialize');
+    },
     /**
      * Sets the value of an attribute in the registration.
      * @param  {string} key - The name of the attribute to be set in the

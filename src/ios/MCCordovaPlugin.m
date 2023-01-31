@@ -118,13 +118,12 @@ const int LOG_LENGTH = 800;
     }
 }
 
-- (void)pluginInitialize {
+- (void)initialize {
     if ([MarketingCloudSDK sharedInstance] == nil) {
         // failed to access the MarketingCloudSDK
         os_log_error(OS_LOG_DEFAULT, "Failed to access the MarketingCloudSDK");
     } else {
         NSDictionary *pluginSettings = self.commandDelegate.settings;
-
         MarketingCloudSDKConfigBuilder *configBuilder = [MarketingCloudSDKConfigBuilder new];
         [configBuilder
             sfmc_setApplicationId:pluginSettings[@"com.salesforce.marketingcloud.app_id"]];
@@ -196,6 +195,17 @@ const int LOG_LENGTH = 800;
                           }];
                       }
                     }];
+    }
+}
+
+- (void)pluginInitialize {
+    NSDictionary *pluginSettings = self.commandDelegate.settings;
+    BOOL onLoad = [pluginSettings[@"com.salesforce.marketingcloud.onload"] boolValue];
+    
+    if (!onLoad){
+        NSLog(@"pluginInitialize STOP!!!!");
+    } else {
+        [self initialize]
     }
 }
 
