@@ -195,6 +195,8 @@ const int LOG_LENGTH = 800;
                           }];
                       }
                     }];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK]
+                        callbackId:12345];
     }
 }
 
@@ -205,7 +207,7 @@ const int LOG_LENGTH = 800;
     if (!onLoad){
         NSLog(@"pluginInitialize STOP!!!!");
     } else {
-        [self initialize]
+        [self initialize];
     }
 }
 
