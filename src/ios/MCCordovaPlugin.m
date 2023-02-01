@@ -118,7 +118,7 @@ const int LOG_LENGTH = 800;
     }
 }
 
-- (void)initialize {
+- (void)initialize:(CDVInvokedUrlCommand *)command {
     if ([MarketingCloudSDK sharedInstance] == nil) {
         // failed to access the MarketingCloudSDK
         os_log_error(OS_LOG_DEFAULT, "Failed to access the MarketingCloudSDK");
@@ -196,7 +196,7 @@ const int LOG_LENGTH = 800;
                       }
                     }];
         [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK]
-                        callbackId:12345];
+                        callbackId:@""];
     }
 }
 
@@ -207,7 +207,7 @@ const int LOG_LENGTH = 800;
     if (!onLoad){
         NSLog(@"pluginInitialize STOP!!!!");
     } else {
-        [self initialize];
+        [self initialize:[CDVInvokedUrlCommand new]];
     }
 }
 
